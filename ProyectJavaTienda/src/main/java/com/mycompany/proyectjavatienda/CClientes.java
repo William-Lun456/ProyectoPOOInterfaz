@@ -4,6 +4,7 @@
  */
 package com.mycompany.proyectjavatienda;
 
+import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
@@ -69,7 +70,7 @@ public class CClientes {
                 ,JTextField paramDireccion,JTextField paramCorreo,JTextField paramCelular){
         try{
             int fila= paramTablaCliente.getSelectedRow();
-            if(fila>0){
+            if(fila>=0){
                 paramID.setText(paramTablaCliente.getValueAt(fila, 0).toString());
                 paramNombres.setText(paramTablaCliente.getValueAt(fila, 1).toString());
                 paramApellidos.setText(paramTablaCliente.getValueAt(fila, 2).toString());
@@ -81,6 +82,28 @@ public class CClientes {
             }
         }catch(Exception e){
             JOptionPane.showMessageDialog(null,"Error de seleccion,error :"+e.toString());
+        }
+    }
+    public void InsertarClientes(JTextField paramNombres,JTextField paramApellidos 
+                ,JTextField paramDireccion,JTextField paramCorreo,JTextField paramCelular){
+        CConexion objetoConexion=new CConexion();
+        String consulta ="insert into Clientes(Nombres,Apellidos,Direccion,Correo,Celular) values\n" +
+"(?,?,?,?,?);";
+        try{
+            CallableStatement cs=objetoConexion.establecerConexion().prepareCall(consulta);
+            
+            
+            cs.setString(1,paramNombres.getText());
+            cs.setString(2,paramApellidos.getText());
+            cs.setString(3,paramDireccion.getText());
+            cs.setString(4,paramCorreo.getText());
+            cs.setString(5,paramCelular.getText());
+            
+            cs.execute();
+            
+            JOptionPane.showMessageDialog(null,"Se inserto correctamente el cliente:");
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null,"Error de guardar,error :"+e.toString());
         }
     }
 }

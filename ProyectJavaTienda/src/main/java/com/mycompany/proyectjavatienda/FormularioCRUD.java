@@ -197,7 +197,9 @@ public class FormularioCRUD extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        // TODO add your handling code here:
+        CClientes objetoClientes= new CClientes();
+        objetoClientes.InsertarClientes(txtNombres, txtApellidos, txtDireccion, txtCorreo, txtCelular);
+        objetoClientes.mostrarClientes(tableClientes);
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void tableClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableClientesMouseClicked
