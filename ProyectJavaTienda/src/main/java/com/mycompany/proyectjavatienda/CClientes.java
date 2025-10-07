@@ -65,4 +65,22 @@ public class CClientes {
         }
         
     }
+    public void SeleccionarClientes(JTable paramTablaCliente,JTextField paramID,JTextField paramNombres,JTextField paramApellidos 
+                ,JTextField paramDireccion,JTextField paramCorreo,JTextField paramCelular){
+        try{
+            int fila= paramTablaCliente.getSelectedRow();
+            if(fila>0){
+                paramID.setText(paramTablaCliente.getValueAt(fila, 0).toString());
+                paramNombres.setText(paramTablaCliente.getValueAt(fila, 1).toString());
+                paramApellidos.setText(paramTablaCliente.getValueAt(fila, 2).toString());
+                paramDireccion.setText(paramTablaCliente.getValueAt(fila, 3).toString());
+                paramCorreo.setText(paramTablaCliente.getValueAt(fila, 4).toString());
+                paramCelular.setText(paramTablaCliente.getValueAt(fila, 5).toString());
+            }else{
+                JOptionPane.showMessageDialog(null,"No se selecciono registros,error :");
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null,"Error de seleccion,error :"+e.toString());
+        }
+    }
 }
