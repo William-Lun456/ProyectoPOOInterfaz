@@ -106,4 +106,25 @@ public class CClientes {
             JOptionPane.showMessageDialog(null,"Error de guardar,error :"+e.toString());
         }
     }
+    public void ModificarClientes(JTextField paramID,JTextField paramNombres,JTextField paramApellidos 
+                ,JTextField paramDireccion,JTextField paramCorreo,JTextField paramCelular){
+        CConexion objetoConexion =new CConexion();
+        String consulta="Update Clientes set Nombres=?,Apellidos=?,Direccion=?,Correo=?,Celular=? where ID=?;";
+        try{
+            CallableStatement cs= objetoConexion.establecerConexion().prepareCall(consulta);
+            
+            cs.setString(1,paramNombres.getText());
+            cs.setString(2,paramApellidos.getText());
+            cs.setString(3,paramDireccion.getText());
+            cs.setString(4,paramCorreo.getText());
+            cs.setString(5,paramCelular.getText());
+            cs.setString(6,paramID.getText());
+            
+            cs.execute();
+            
+            JOptionPane.showMessageDialog(null,"Se modifo correctamente el cliente:");
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null,"Error de modifcar,error :"+e.toString());
+        }
+    }
 }

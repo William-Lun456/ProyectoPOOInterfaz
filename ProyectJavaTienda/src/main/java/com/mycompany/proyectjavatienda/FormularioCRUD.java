@@ -71,6 +71,11 @@ public class FormularioCRUD extends javax.swing.JFrame {
         });
 
         btnModificar.setText("Modificar");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
 
         btnEliminar.setText("Eliminar");
 
@@ -207,6 +212,12 @@ public class FormularioCRUD extends javax.swing.JFrame {
         objetoClientes.SeleccionarCliente(tableClientes, txtID, txtNombres, txtApellidos, txtDireccion, txtCorreo, txtCelular);
         
     }//GEN-LAST:event_tableClientesMouseClicked
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        CClientes objetoClientes= new CClientes();
+        objetoClientes.ModificarClientes(txtID,txtNombres, txtApellidos, txtDireccion, txtCorreo, txtCelular);
+        objetoClientes.mostrarClientes(tableClientes);
+    }//GEN-LAST:event_btnModificarActionPerformed
 
     /**
      * @param args the command line arguments
