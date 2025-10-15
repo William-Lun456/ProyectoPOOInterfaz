@@ -127,4 +127,18 @@ public class CClientes {
             JOptionPane.showMessageDialog(null,"Error de modifcar,error :"+e.toString());
         }
     }
+    public void EliminarClientes(JTextField paramID){
+        CConexion objetoConexion =new CConexion();
+        String consulta="Delete from Clientes where ID=?;";
+        try{
+            CallableStatement cs= objetoConexion.establecerConexion().prepareCall(consulta);
+            cs.setString(1,paramID.getText());
+            cs.execute();
+            
+            JOptionPane.showMessageDialog(null,"Se elimino correctamente el cliente:");
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null,"Error de eliminacion,error :"+e.toString());
+        }
+    }
 }

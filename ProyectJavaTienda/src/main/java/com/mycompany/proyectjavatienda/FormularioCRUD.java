@@ -78,6 +78,11 @@ public class FormularioCRUD extends javax.swing.JFrame {
         });
 
         btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -218,6 +223,12 @@ public class FormularioCRUD extends javax.swing.JFrame {
         objetoClientes.ModificarClientes(txtID,txtNombres, txtApellidos, txtDireccion, txtCorreo, txtCelular);
         objetoClientes.mostrarClientes(tableClientes);
     }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        CClientes objetoClientes= new CClientes();
+        objetoClientes.EliminarClientes(txtID);
+        objetoClientes.mostrarClientes(tableClientes);
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
     /**
      * @param args the command line arguments
