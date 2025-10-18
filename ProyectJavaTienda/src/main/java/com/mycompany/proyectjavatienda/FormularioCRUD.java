@@ -17,6 +17,8 @@ public class FormularioCRUD extends javax.swing.JFrame {
         initComponents();
         CClientes objetoClientes= new CClientes();
         objetoClientes.mostrarClientes(tableClientes);
+        
+        txtID.setEnabled(false);
     }
 
     /**
@@ -210,6 +212,13 @@ public class FormularioCRUD extends javax.swing.JFrame {
         CClientes objetoClientes= new CClientes();
         objetoClientes.InsertarClientes(txtNombres, txtApellidos, txtDireccion, txtCorreo, txtCelular);
         objetoClientes.mostrarClientes(tableClientes);
+        
+        txtID.setText("");
+        txtNombres.setText("");
+        txtApellidos.setText("");
+        txtDireccion.setText("");
+        txtCorreo.setText("");
+        txtCelular.setText("");
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void tableClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableClientesMouseClicked
@@ -222,12 +231,26 @@ public class FormularioCRUD extends javax.swing.JFrame {
         CClientes objetoClientes= new CClientes();
         objetoClientes.ModificarClientes(txtID,txtNombres, txtApellidos, txtDireccion, txtCorreo, txtCelular);
         objetoClientes.mostrarClientes(tableClientes);
+        
+        txtID.setText("");
+        txtNombres.setText("");
+        txtApellidos.setText("");
+        txtDireccion.setText("");
+        txtCorreo.setText("");
+        txtCelular.setText("");
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         CClientes objetoClientes= new CClientes();
         objetoClientes.EliminarClientes(txtID);
         objetoClientes.mostrarClientes(tableClientes);
+        
+        txtID.setText("");
+        txtNombres.setText("");
+        txtApellidos.setText("");
+        txtDireccion.setText("");
+        txtCorreo.setText("");
+        txtCelular.setText("");
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     /**
