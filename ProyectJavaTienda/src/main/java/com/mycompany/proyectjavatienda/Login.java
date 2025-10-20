@@ -120,19 +120,20 @@ public class Login extends javax.swing.JFrame {
     private void txtLogin_UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLogin_UsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtLogin_UsuarioActionPerformed
-
+    int intentos=3;
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         String Usuario ="admin";
         String Contrasenia="1234";
         String Pass=new String(Password.getPassword());
-        int intentos=3;
+        
         
         if (txtLogin_Usuario.getText().equals(Usuario) && Pass.equals(Contrasenia)) {
             JOptionPane.showMessageDialog(this, "Bienvenido " + Usuario + "!");
             
-            FormularioCRUD objetoFormularioCRUD= new FormularioCRUD();
-            objetoFormularioCRUD.setVisible(true);
+            Menu objetoMenu= new Menu();
+            objetoMenu.setVisible(true);
             
+
             this.dispose();
         } else {
             intentos--;
