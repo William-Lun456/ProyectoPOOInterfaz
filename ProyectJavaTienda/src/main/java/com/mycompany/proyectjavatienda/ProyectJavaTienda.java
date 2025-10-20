@@ -11,7 +11,8 @@ package com.mycompany.proyectjavatienda;
 public class ProyectJavaTienda {
 
     public static void main(String[] args) {
-        FormularioCRUD objetoFormularioCRUD= new FormularioCRUD();
-        objetoFormularioCRUD.setVisible(true);
+        Login objetoLogin=new Login();
+        objetoLogin.setVisible(true);
+        
     }
 }
