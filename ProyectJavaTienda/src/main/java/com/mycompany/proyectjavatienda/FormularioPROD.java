@@ -16,6 +16,8 @@ public class FormularioPROD extends javax.swing.JFrame {
     public FormularioPROD() {
         initComponents();
         
+        CProductos objetoProductos= new CProductos();
+        objetoProductos.mostrarProductos(tableProductos);
     }
 
     /**
@@ -62,6 +64,11 @@ public class FormularioPROD extends javax.swing.JFrame {
         btnGuardar.setText("Guardar");
 
         btnRegresar.setText("Regresar");
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
 
         btnEliminar.setText("Eliminar");
 
@@ -181,6 +188,12 @@ public class FormularioPROD extends javax.swing.JFrame {
     private void comCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comCategoriaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_comCategoriaActionPerformed
+
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+        Menu objetoMenu=new Menu();
+        objetoMenu.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnRegresarActionPerformed
 
     /**
      * @param args the command line arguments

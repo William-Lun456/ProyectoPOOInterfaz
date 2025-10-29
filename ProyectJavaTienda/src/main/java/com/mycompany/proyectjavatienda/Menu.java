@@ -45,6 +45,11 @@ public class Menu extends javax.swing.JFrame {
         });
 
         btnProductos.setText("PRODUCTOS");
+        btnProductos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProductosActionPerformed(evt);
+            }
+        });
 
         btnHistorialVentas.setText("HISTORIAL VENTAS");
 
@@ -119,6 +124,12 @@ public class Menu extends javax.swing.JFrame {
             System.exit(0);
         }
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductosActionPerformed
+        FormularioPROD objetoFormularioPROD= new FormularioPROD();
+        objetoFormularioPROD.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnProductosActionPerformed
 
     /**
      * @param args the command line arguments
