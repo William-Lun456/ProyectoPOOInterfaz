@@ -62,6 +62,11 @@ public class FormularioPROD extends javax.swing.JFrame {
         btnModificar.setText("Modificar");
 
         btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
         btnRegresar.setText("Regresar");
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
@@ -71,6 +76,12 @@ public class FormularioPROD extends javax.swing.JFrame {
         });
 
         btnEliminar.setText("Eliminar");
+
+        txtNombre_Pro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombre_ProActionPerformed(evt);
+            }
+        });
 
         comCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PS3", "PS4", "PS5", "Nintendo", "XBOX", "PC", "Membresias" }));
         comCategoria.addActionListener(new java.awt.event.ActionListener() {
@@ -194,6 +205,23 @@ public class FormularioPROD extends javax.swing.JFrame {
         objetoMenu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnRegresarActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        CProductos objetoProductos= new CProductos();
+        objetoProductos.InsertarProducto(comCategoria, txtNombre_Pro, txtPrecio, txtStock );
+        objetoClientes.mostrarClientes(tableClientes);
+        
+        txtID.setText("");
+        txtNombres.setText("");
+        txtApellidos.setText("");
+        txtDireccion.setText("");
+        txtCorreo.setText("");
+        txtCelular.setText("");
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void txtNombre_ProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombre_ProActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombre_ProActionPerformed
 
     /**
      * @param args the command line arguments
