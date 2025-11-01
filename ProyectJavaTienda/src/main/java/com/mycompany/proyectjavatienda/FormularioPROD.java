@@ -60,6 +60,11 @@ public class FormularioPROD extends javax.swing.JFrame {
         jLabel4.setText("Stock:");
 
         btnModificar.setText("Modificar");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
 
         btnGuardar.setText("Guardar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -76,6 +81,11 @@ public class FormularioPROD extends javax.swing.JFrame {
         });
 
         btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         txtNombre_Pro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -170,6 +180,11 @@ public class FormularioPROD extends javax.swing.JFrame {
 
             }
         ));
+        tableProductos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableProductosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tableProductos);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -209,19 +224,47 @@ public class FormularioPROD extends javax.swing.JFrame {
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         CProductos objetoProductos= new CProductos();
         objetoProductos.InsertarProducto(comCategoria, txtNombre_Pro, txtPrecio, txtStock );
-        objetoClientes.mostrarClientes(tableClientes);
+        objetoProductos.mostrarProductos(tableProductos);
         
         txtID.setText("");
-        txtNombres.setText("");
-        txtApellidos.setText("");
-        txtDireccion.setText("");
-        txtCorreo.setText("");
-        txtCelular.setText("");
+        comCategoria.setSelectedIndex(0); // Reinicia el combo
+        txtNombre_Pro.setText("");
+        txtPrecio.setText("");
+        txtStock.setText("");
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void txtNombre_ProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombre_ProActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombre_ProActionPerformed
+
+    private void tableProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableProductosMouseClicked
+        CProductos objetoProductos= new CProductos();
+        objetoProductos.SeleccionarProducto(tableProductos, txtID, comCategoria, txtNombre_Pro, txtPrecio, txtStock);
+    }//GEN-LAST:event_tableProductosMouseClicked
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        CProductos objetoProductos= new CProductos();
+        objetoProductos.ModificarProducto(txtID,comCategoria, txtNombre_Pro, txtPrecio, txtStock );
+        objetoProductos.mostrarProductos(tableProductos);
+        
+        txtID.setText("");
+        comCategoria.setSelectedIndex(0); // Reinicia el combo
+        txtNombre_Pro.setText("");
+        txtPrecio.setText("");
+        txtStock.setText("");
+    }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        CProductos objetoProductos= new CProductos();
+        objetoProductos.EliminarProducto(txtID);
+        objetoProductos.mostrarProductos(tableProductos);
+        
+        txtID.setText("");
+        comCategoria.setSelectedIndex(0); // Reinicia el combo
+        txtNombre_Pro.setText("");
+        txtPrecio.setText("");
+        txtStock.setText("");
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
     /**
      * @param args the command line arguments

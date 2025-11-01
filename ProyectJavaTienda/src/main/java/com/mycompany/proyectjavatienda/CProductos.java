@@ -46,13 +46,13 @@ public class CProductos {
             JOptionPane.showMessageDialog(null,"No se mostraron los registros,error :"+e.toString());
         }
     }   
-    public void SeleccionarProducto(JTable paramTablaProductos, JTextField paramID, JTextField paramCategoria,
+    public void SeleccionarProducto(JTable paramTablaProductos, JTextField paramID, JComboBox paramCategoria,
                                     JTextField paramNombre, JTextField paramPrecio, JTextField paramStock) {
         try {
             int fila = paramTablaProductos.getSelectedRow();
             if (fila >= 0) {
                 paramID.setText(paramTablaProductos.getValueAt(fila, 0).toString());
-                paramCategoria.setText(paramTablaProductos.getValueAt(fila, 1).toString());
+                paramCategoria.setSelectedItem(paramTablaProductos.getValueAt(fila, 1).toString());
                 paramNombre.setText(paramTablaProductos.getValueAt(fila, 2).toString());
                 paramPrecio.setText(paramTablaProductos.getValueAt(fila, 3).toString());
                 paramStock.setText(paramTablaProductos.getValueAt(fila, 4).toString());
@@ -72,7 +72,7 @@ public class CProductos {
 
         try {
             CallableStatement cs = objetoConexion.establecerConexion().prepareCall(consulta);
-            cs.setString(1, paramCategoria.getText());
+            cs.setString(1, paramCategoria.getSelectedItem().toString());
             cs.setString(2, paramNombre.getText());
             cs.setBigDecimal(3, new java.math.BigDecimal(paramPrecio.getText()));
             cs.setInt(4, Integer.parseInt(paramStock.getText()));
@@ -85,14 +85,14 @@ public class CProductos {
     }
 
     // Método para modificar un producto existente
-    public void ModificarProducto(JTextField paramID, JTextField paramCategoria, JTextField paramNombre,
+    public void ModificarProducto(JTextField paramID, JComboBox paramCategoria, JTextField paramNombre,
                                   JTextField paramPrecio, JTextField paramStock) {
         CConexion objetoConexion = new CConexion();
         String consulta = "UPDATE Productos SET Categoria=?, Nombre=?, Precio=?, Stock=? WHERE ID=?;";
 
         try {
             CallableStatement cs = objetoConexion.establecerConexion().prepareCall(consulta);
-            cs.setString(1, paramCategoria.getText());
+            cs.setString(1, paramCategoria.getSelectedItem().toString());
             cs.setString(2, paramNombre.getText());
             cs.setBigDecimal(3, new java.math.BigDecimal(paramPrecio.getText()));
             cs.setInt(4, Integer.parseInt(paramStock.getText()));
