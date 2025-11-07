@@ -4,6 +4,7 @@
  */
 package com.mycompany.proyectjavatienda;
 import java.awt.Image;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -12,13 +13,15 @@ import javax.swing.JOptionPane;
  *
  * @author Usuario
  */
-public class Login extends javax.swing.JFrame {
-
+public final class Login extends javax.swing.JFrame {
+    
     /**
      * Creates new form Login
      */
     public Login() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        loginLabel(IconLogin, "/com/mycompany/proyectjavatienda/img/contrasena.png");
     }
 
     /**
@@ -169,14 +172,7 @@ public class Login extends javax.swing.JFrame {
             System.exit(0);
         }
     }//GEN-LAST:event_btnSalirActionPerformed
-// Método para colocar y ajustar la imagen al JLabel
-private void setIconScaled(JLabel label, String path) {
-    ImageIcon icon = new ImageIcon(getClass().getResource(path)); // Carga desde carpeta "img"
-    Image img = icon.getImage();
-    Image scaled = img.getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH);
-    label.setIcon(new ImageIcon(scaled));
-    label.setText(null); // por si tenía texto
-}
+
 
     /**
      * @param args the command line arguments
@@ -212,6 +208,14 @@ private void setIconScaled(JLabel label, String path) {
             }
         });
     }
+    public void loginLabel(JLabel IconLogin,String root){
+        IconLogin.setIcon(new ImageIcon(new ImageIcon(getClass().getResource(root)).getImage()
+                .getScaledInstance(IconLogin.getWidth(),IconLogin.getHeight(),Image.SCALE_DEFAULT)));
+            
+    }
+    
+    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel IconLogin;
