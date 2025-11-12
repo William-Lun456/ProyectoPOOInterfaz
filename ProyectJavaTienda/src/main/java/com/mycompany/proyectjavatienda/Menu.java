@@ -15,6 +15,8 @@ public class Menu extends javax.swing.JFrame {
      */
     public Menu() {
         initComponents();
+        this.setLocationRelativeTo(null); 
+        menuLabel(logoLabel, "src/main/java/com/mycompany/proyectjavatienda/img/logo.png");
     }
 
     /**
@@ -32,10 +34,11 @@ public class Menu extends javax.swing.JFrame {
         btnHistorialVentas = new javax.swing.JButton();
         btnRegistrarVenta = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
+        logoLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(153, 204, 255));
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
 
         btnClientes.setText("CLIENTES");
         btnClientes.addActionListener(new java.awt.event.ActionListener() {
@@ -67,16 +70,21 @@ public class Menu extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(btnClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnRegistrarVenta)
-                .addGap(18, 18, 18)
-                .addComponent(btnHistorialVentas)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(btnClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnRegistrarVenta)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnHistorialVentas)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(95, 95, 95)
+                        .addComponent(logoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(46, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -89,7 +97,9 @@ public class Menu extends javax.swing.JFrame {
                     .addComponent(btnRegistrarVenta)
                     .addComponent(btnHistorialVentas)
                     .addComponent(btnSalir))
-                .addContainerGap(405, Short.MAX_VALUE))
+                .addGap(53, 53, 53)
+                .addComponent(logoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -163,6 +173,30 @@ public class Menu extends javax.swing.JFrame {
             }
         });
     }
+    public void menuLabel(javax.swing.JLabel label, String path) {
+    java.io.File file = new java.io.File(path);
+
+    if (!file.exists()) {
+        System.out.println("No se encontró la imagen en: " + file.getAbsolutePath());
+        return;
+    }
+
+    // Cargar la imagen desde la ruta del sistema de archivos
+    javax.swing.ImageIcon icon = new javax.swing.ImageIcon(file.getAbsolutePath());
+
+    // Escalar la imagen al tamaño del JLabel (por si aún es 0, ponemos valores por defecto)
+    int w = label.getWidth() > 0 ? label.getWidth() : 600;
+    int h = label.getHeight() > 0 ? label.getHeight() : 300;
+
+    java.awt.Image img = icon.getImage().getScaledInstance(
+            w,
+            h,
+            java.awt.Image.SCALE_SMOOTH
+    );
+
+    label.setIcon(new javax.swing.ImageIcon(img));
+}
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClientes;
@@ -171,5 +205,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton btnRegistrarVenta;
     private javax.swing.JButton btnSalir;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel logoLabel;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,7 +4,7 @@
  */
 package com.mycompany.proyectjavatienda;
 import java.awt.Image;
-import javax.swing.Icon;
+/*import javax.swing.Icon;*/
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -21,7 +21,7 @@ public final class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         this.setLocationRelativeTo(null);
-        loginLabel(IconLogin, "/com/mycompany/proyectjavatienda/img/contrasena.png");
+        loginLabel(IconLogin, "src/main/java/com/mycompany/proyectjavatienda/img/contrasena.png");
     }
 
     /**
@@ -208,11 +208,30 @@ public final class Login extends javax.swing.JFrame {
             }
         });
     }
-    public void loginLabel(JLabel IconLogin,String root){
-        IconLogin.setIcon(new ImageIcon(new ImageIcon(getClass().getResource(root)).getImage()
-                .getScaledInstance(IconLogin.getWidth(),IconLogin.getHeight(),Image.SCALE_DEFAULT)));
-            
+    public void loginLabel(javax.swing.JLabel label, String path) {
+    // Comprobar que el archivo existe
+    java.io.File file = new java.io.File(path);
+    if (!file.exists()) {
+        System.out.println("NO SE ENCONTRÓ LA IMAGEN EN: " + file.getAbsolutePath());
+        return; // salimos sin poner imagen, pero sin romper el programa
     }
+
+    // Cargar la imagen desde la ruta del sistema de archivos
+    javax.swing.ImageIcon icon = new javax.swing.ImageIcon(file.getAbsolutePath());
+
+    // Escalar la imagen al tamaño del JLabel (por si aún es 0, ponemos valores por defecto)
+    int w = label.getWidth() > 0 ? label.getWidth() : 290;
+    int h = label.getHeight() > 0 ? label.getHeight() : 200;
+
+    java.awt.Image img = icon.getImage().getScaledInstance(
+            w,
+            h,
+            java.awt.Image.SCALE_SMOOTH
+    );
+
+    label.setIcon(new javax.swing.ImageIcon(img));
+}
+
     
     
 

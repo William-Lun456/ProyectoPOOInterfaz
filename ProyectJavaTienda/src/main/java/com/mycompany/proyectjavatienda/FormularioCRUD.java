@@ -15,6 +15,7 @@ public class FormularioCRUD extends javax.swing.JFrame {
      */
     public FormularioCRUD() {
         initComponents();
+        this.setLocationRelativeTo(null); 
         CClientes objetoClientes= new CClientes();
         objetoClientes.mostrarClientes(tableClientes);
         
